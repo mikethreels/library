@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="initial-scale=1.0"/>
-        <title>Mottox Capstone Project</title>
+        <title>Library</title>
         <link rel="stylesheet" type="text/css" href="assets/styles/reset.css"/>
         <link rel="stylesheet" type="text/css" href="assets/styles/style.css"/>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
@@ -11,17 +11,36 @@
         <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
     </head>
   <body>
-    <nav>
-
-    </nav>
     <header>
-    
+      <nav class="">
+        <div class="title">
+          <h1>LIBRARY</h1>
+        </div>
+        <div class="menu_container">
+          <button onclick="switchForm()">New Book</button>
+        </div>
+      </nav>
     </header>
     <main>
-
+      <div class="form_container">
+        <form id="newBookForm" class="none">
+            <input type="text" name="title" id="newTitle" placeholder="Enter a title" required>
+            <input type="text" name="author" id="newAuthor" placeholder="who is the author?" required>
+            <input type="number" name="pages" id="newPages" placeholder="how many pages?" required>
+          <div class="info">
+            <label for="newRead">Did you read the book already?</label>
+            <input type="checkbox" name="read" id="newRead">
+          </div>
+          <input type="submit" value="Submit">
+        </form>
+      </div>
+      <section id="myShelf">
+        <h2>Your Bookshelf</h2>
+      </section>
     </main>
     <footer>
 
     </footer>
+    <script src="assets/scripts/script.js"></script>
   </body>
 </html>

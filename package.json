@@ -1,0 +1,25 @@
+{
+  "name": "library",
+  "version": "1.0.0",
+  "description": "> One paragraph statement about the project.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikethreels/library.git"
+  },
+  "keywords": [
+    "library"
+  ],
+  "author": "michael threels",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mikethreels/library/issues"
+  },
+  "homepage": "https://github.com/mikethreels/library#readme",
+  "dependencies": {
+    "package": "^1.0.1"
+  }
+}
