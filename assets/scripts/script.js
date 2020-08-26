@@ -13,7 +13,6 @@ function Book(title, author, pages, read = false) {
   this.pages = pages;
   this.read = read;
   id += 1;
-
 }
 // adds book to library
 function addBookToLibrary(title, author, pages, read = false) {
@@ -29,14 +28,15 @@ function render() {
   }
   myLibrary.forEach(book => {
     const {
-    author, title, pages, read, id} = book;
-  
+      author, title, pages, read, id,
+    } = book;
+
     const bookDiv = document.createElement('div');
 
     const titleHead = document.createElement('h3');
     titleHead.innerHTML = title;
     bookDiv.appendChild(titleHead);
-    
+
     const authorText = document.createElement('p');
     authorText.innerHTML = author;
     bookDiv.appendChild(authorText);
@@ -44,17 +44,17 @@ function render() {
     const pageText = document.createElement('p');
     pageText.innerHTML = pages;
     if (read) {
-      pageText.innerHTML = `You've read ${pages}`
-    }else {
-      pageText.innerHTML = `${pages} to be read`
+      pageText.innerHTML = `You've read ${pages}`;
+    } else {
+      pageText.innerHTML = `${pages} to be read`;
     }
     bookDiv.appendChild(pageText);
 
     const readText = document.createElement('p');
     if (read) {
-      readText.innerHTML = "You already read this one!"
-    }else {
-      readText.innerHTML = "Please read!"
+      readText.innerHTML = 'You already read this one!';
+    } else {
+      readText.innerHTML = 'Please read!';
     }
     bookDiv.appendChild(readText);
 
@@ -72,10 +72,10 @@ function render() {
 const switchForm = () => {
   if (newBookForm.attributes.class.value === 'none') {
     newBookForm.attributes.class.value = 'block';
-  }else {
+  } else {
     newBookForm.attributes.class.value = 'none';
   }
-}
+};
 
 // deletes book from myLibrary using id
 // eslint-disable-next-line no-unused-vars
@@ -93,7 +93,7 @@ function updateBook(id) {
   const findIndex = myLibrary.findIndex(book => book.id === id);
   if (myLibrary[findIndex].read === true) {
     myLibrary[findIndex].read = false;
-  }else {
+  } else {
     myLibrary[findIndex].read = true;
   }
   render();
@@ -124,5 +124,5 @@ function sendBook(e) {
   newread.value = '';
 }
 // checks if the submit button is clicked
-newBookForm.addEventListener('submit', sendBook)
+newBookForm.addEventListener('submit', sendBook);
 displayDefaultBooks();

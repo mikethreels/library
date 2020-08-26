@@ -18,7 +18,7 @@ header {
   right: 0;
   top: 0;
   z-index: 1;
-  background-color: #1DA1F2;
+  background-color: #1da1f2;
   color: #fff;
 }
 
@@ -34,6 +34,13 @@ h1 {
   padding: 20px;
 }
 
+section button {
+  padding: 5px;
+  margin: 5px;
+  font-weight: 700;
+  border-radius: 10px;
+}
+
 .menu_container button {
   padding: 5px;
   margin: 5px;
@@ -41,11 +48,16 @@ h1 {
   border-radius: 10px;
 }
 
+section button:hover {
+  cursor: pointer;
+  background-color: #657786;
+  color: white;
+}
+
 .menu_container button:hover {
   cursor: pointer;
   background-color: #657786;
   color: white;
-
 }
 
 main {
@@ -61,7 +73,7 @@ form > input {
   width: 25vw;
 }
 
-.submit_button{
+.submit_button {
   padding: 5px;
   margin: 5px;
   font-weight: 700;
@@ -94,17 +106,4 @@ section > div {
 
 section p {
   padding: 5px 0;
-}
-
-section button {
-  padding: 5px;
-  margin: 5px;
-  font-weight: 700;
-  border-radius: 10px;
-}
-
-section button:hover{
-  cursor: pointer;
-  background-color: #657786;
-  color: white;
 }
