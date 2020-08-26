@@ -4,8 +4,8 @@ const newtitle = document.getElementById('newTitle');
 const newauthor = document.getElementById('newAuthor');
 const newpages = document.getElementById('newPages');
 const newread = document.getElementById('newRead');
-let count = 0;
 let id = 0;
+
 function Book(title, author, pages, read = false) {
   this.id = id;
   this.title = title;
@@ -13,44 +13,62 @@ function Book(title, author, pages, read = false) {
   this.pages = pages;
   this.read = read;
   id += 1;
-  // this.info = function() {
-  //   let str = title + author + "," + pages + "," + read;
-  //   return str;
-  // }
-}
 
+}
+// adds book to library
 function addBookToLibrary(title, author, pages, read = false) {
   const book = new Book(title, author, pages, read);
-  console.log(book)
   myLibrary.push(book);
 }
 
+// renders the myshelf section and adds all books in myLibrary
 function render() {
   const myShelf = document.getElementById('myShelf');
-  while (count < myLibrary.length) {
-    count += 1
+  while (myShelf.firstChild) {
+    myShelf.removeChild(myShelf.firstChild);
+  }
+  myLibrary.forEach(book => {
+    const {
+    author, title, pages, read, id} = book;
+  
     const bookDiv = document.createElement('div');
 
     const titleHead = document.createElement('h3');
-    titleHead.innerHTML = myLibrary[count - 1].title;
+    titleHead.innerHTML = title;
     bookDiv.appendChild(titleHead);
     
     const authorText = document.createElement('p');
-    authorText.innerHTML = myLibrary[count - 1].author;
+    authorText.innerHTML = author;
     bookDiv.appendChild(authorText);
 
     const pageText = document.createElement('p');
-    pageText.innerHTML = myLibrary[count - 1].pages;
+    pageText.innerHTML = pages;
+    if (read) {
+      pageText.innerHTML = `You've read ${pages}`
+    }else {
+      pageText.innerHTML = `${pages} to be read`
+    }
     bookDiv.appendChild(pageText);
 
     const readText = document.createElement('p');
-    readText.innerHTML = myLibrary[count - 1].read;
+    if (read) {
+      readText.innerHTML = "You already read this one!"
+    }else {
+      readText.innerHTML = "Please read!"
+    }
     bookDiv.appendChild(readText);
 
-    myShelf.appendChild(bookDiv);
-  }
-}
+    const buttonDiv = document.createElement('div');
+    buttonDiv.innerHTML = `<button onclick="deleteBook(${id})" id="deleteButton">Delete</button>`;
+    buttonDiv.innerHTML += `<button onclick="updateBook(${id})" id="updateButton">Read</button>`;
+    bookDiv.appendChild(buttonDiv);
 
+
+    myShelf.appendChild(bookDiv);
+  });
+}
+// opens and closes the form
+// eslint-disable-next-line no-unused-vars
 const switchForm = () => {
   if (newBookForm.attributes.class.value === 'none') {
     newBookForm.attributes.class.value = 'block';
@@ -59,22 +77,52 @@ const switchForm = () => {
   }
 }
 
-function displayDefaultBooks() {
-  addBookToLibrary("You Don't Know JS Yet: Get Started", 'Kyle Simpson', 145, false);
-  addBookToLibrary("You Don't Know JS Yet: scope & closures", 'Kyle Simpson', 281, false);
+// deletes book from myLibrary using id
+// eslint-disable-next-line no-unused-vars
+function deleteBook(id) {
+  const findIndex = myLibrary.findIndex(book => book.id === id);
+
+  if (findIndex !== -1) {
+    myLibrary.splice(findIndex, 1);
+  }
   render();
 }
 
+// eslint-disable-next-line no-unused-vars
+function updateBook(id) {
+  const findIndex = myLibrary.findIndex(book => book.id === id);
+  if (myLibrary[findIndex].read === true) {
+    myLibrary[findIndex].read = false;
+  }else {
+    myLibrary[findIndex].read = true;
+  }
+  render();
+}
+
+// adds default books to myLibrary
+function displayDefaultBooks() {
+  addBookToLibrary("You Don't Know JS Yet: Get Started", 'Kyle Simpson', 145, false);
+  addBookToLibrary("You Don't Know JS Yet: Scope & closures", 'Kyle Simpson', 281, false);
+  addBookToLibrary("You Don't Know JS Yet: Up & Going", 'Kyle Simpson', 88, false);
+  addBookToLibrary("You Don't Know JS Yet: This & object prototypes", 'Kyle Simpson', 174, false);
+  addBookToLibrary("You Don't Know JS Yet: Async & performance", 'Kyle Simpson', 296, false);
+  addBookToLibrary("You Don't Know JS Yet: ES6 & beyond", 'Kyle Simpson', 278, false);
+  addBookToLibrary("You Don't Know JS Yet: Types & grammer", 'Kyle Simpson', 198, false);
+  addBookToLibrary("You Don't Know JS Yet: Scopes & closures", 'Kyle Simpson', 98, false);
+  render();
+}
+
+// send the new book to myLibrary
 function sendBook(e) {
+  // prevent the submit button from sending the form
   e.preventDefault();
   addBookToLibrary(newtitle.value, newauthor.value, newpages.value, newread.checked);
-  console.log(newtitle.value)
   render();
   newtitle.value = '';
   newauthor.value = '';
   newpages.value = '';
   newread.value = '';
 }
-console.log(newtitle.value)
+// checks if the submit button is clicked
 newBookForm.addEventListener('submit', sendBook)
 displayDefaultBooks();
