@@ -1,0 +1,109 @@
+.none {
+  display: none;
+}
+
+.block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+html {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+header {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 1;
+  background-color: #1da1f2;
+  color: #fff;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+h1 {
+  font-size: 30px;
+  font-weight: 700;
+  padding: 20px;
+}
+
+section button {
+  padding: 5px;
+  margin: 5px;
+  font-weight: 700;
+  border-radius: 10px;
+}
+
+.menu_container button {
+  padding: 5px;
+  margin: 5px;
+  font-weight: 700;
+  border-radius: 10px;
+}
+
+section button:hover {
+  cursor: pointer;
+  background-color: #657786;
+  color: white;
+}
+
+.menu_container button:hover {
+  cursor: pointer;
+  background-color: #657786;
+  color: white;
+}
+
+main {
+  position: relative;
+  top: 109px;
+}
+
+form > input {
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 5px;
+  margin: 2px;
+  width: 25vw;
+}
+
+.submit_button {
+  padding: 5px;
+  margin: 5px;
+  font-weight: 700;
+  border-radius: 10px;
+}
+
+.submit_button:hover {
+  cursor: pointer;
+  background-color: #657786;
+  color: white;
+}
+
+section {
+  margin: 10px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 5px;
+}
+
+h3 {
+  font-size: 20px;
+  padding: 5px 0;
+}
+
+section > div {
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+section p {
+  padding: 5px 0;
+}
