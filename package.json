@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/mikethreels/library#readme",
   "dependencies": {
+    "chalk": "^4.1.0",
     "package": "^1.0.1"
   },
   "devDependencies": {

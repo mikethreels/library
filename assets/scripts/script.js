@@ -44,9 +44,9 @@ function render() {
     const pageText = document.createElement('p');
     pageText.innerHTML = pages;
     if (read) {
-      pageText.innerHTML = `You've read ${pages}`;
+      pageText.innerHTML = `You've read ${pages} pages`;
     } else {
-      pageText.innerHTML = `${pages} to be read`;
+      pageText.innerHTML = `${pages} pages to be read`;
     }
     bookDiv.appendChild(pageText);
 
@@ -82,9 +82,8 @@ const switchForm = () => {
 function deleteBook(id) {
   const findIndex = myLibrary.findIndex(book => book.id === id);
 
-  if (findIndex !== -1) {
-    myLibrary.splice(findIndex, 1);
-  }
+  myLibrary.splice(findIndex, 1);
+
   render();
 }
 
